@@ -1,4 +1,6 @@
 // 1.Berilgan matnda katta va kichik harflarning sonini toping 
+let newStr = "Begzodaka Blat"
+let newStrJoin = newStr.split("").join("")
 function countCase(str) {
 let count = 0;
 let count1 = 0;
@@ -17,7 +19,7 @@ return {
 
 
     }
-    console.log(countCase("Hello World!")); // {uppercase: 2, lowercase: 8}
+    console.log(countCase(newStr)); // {uppercase: 2, lowercase: 8}
 
 
 
@@ -39,6 +41,32 @@ function evenOddIndexSums(arr) {
 
 // 3.Berilgan matritsani soat strelkasiga qarama-qarshi
 //  yo'nalishda 90 daraja aylantiring.
+
+function rotateMatrix(matrix) {
+    let res = [];
+
+for (let i = 0; i < matrix.length; i++) {
+    let sum = []
+    for (let j = 0; j < matrix.length; j++) {
+        sum.push(matrix[j][i]);
+    }
+    res.push(sum);
+}
+return res.reverse()
+    }
+    console.log(rotateMatrix([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+    ]));
+    // [
+    //  [3, 6, 9],
+    //  [2, 5, 8],
+    //  [1, 4, 7]
+    // ]
+
+
+
 
 
 
@@ -64,24 +92,25 @@ function areAnagrams(str1, str2) {
 
 // 6.Berilgan massivdagi eng ko'p takrorlangan elementni toping.
 function mostFrequentElement(arr) {
-    let Map = arr.reduce((map, current) => {
-        map[current] = (map[current] , 0) + 1;
+    let map = arr.reduce((map, current) => {
+        map[current] = (map[current] || 0) + 1;
         return map;
     }, {});
-    let Num;
+    let num = 0;
     let max = 0;
     
-    for (let num in Map) {
-        if (Map[num] > max) {
-            max = Map[num];
-            Num = num;
+    for (let key in map) {
+        if (map[key] > max) {
+            max = map[key];
+            num = key;
         }
     }
-    return Num
+    return Number(num);
 
 }
 
-// console.log(mostFrequentElement([1, 3, 2, 1, 4, 1, 3, 1, 5, 1])); // 1
+console.log(mostFrequentElement([1, 3, 2, 1, 4, 1, 3, 5, 1]));
+
 
 // 7.Berilgan qator ichidagi barcha raqamlarning yig'indisini hisoblang.
 function sumOfDigits(str) {
